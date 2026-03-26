@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  cache:
+    type: redis # Tells Spring to use Redis instead of in-memory cache
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost} # Default to localhost if env var isn't set
+      port: ${REDIS_PORT:6379}
+
+# Your Custom Weather Settings
+weather:
+  api:
+    base-url: https://api.openweathermap.org/data/2.5
+    key: ${WEATHER_API_KEY} # Crucial: Load this from an Environment Variable
+    cache-ttl-seconds: 3600 # Cache weather for 1 hour
